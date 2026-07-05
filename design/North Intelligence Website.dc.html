@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #E9E7E0; font-family: 'Inter', sans-serif; color: #111; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+</style>
+</helmet>
+
+<!-- Browser-ish frame -->
+<div style="min-height: 100vh; padding: 40px; display: flex; flex-direction: column; gap: 24px;">
+
+  <!-- Layout: floating card left + main content right, like the reference -->
+  <div style="display: grid; grid-template-columns: 300px 1fr; gap: 24px; align-items: start; max-width: 1400px; margin: 0 auto; width: 100%;">
+
+    <!-- Left floating card -->
+    <aside style="background: #FAFAF7; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 20px; position: sticky; top: 40px;">
+      <div style="font-family: 'Fraunces', serif; font-weight: 500; font-size: 30px; line-height: 1.1; letter-spacing: -0.02em;">
+        <span style="color: #235347;">Ship</span> data that<br>
+        earns trust.
+      </div>
+      <p style="font-size: 13px; line-height: 1.5; color: #555; margin: 0;">Freelance data consulting for teams that need dashboards, pipelines, and models they can actually defend.</p>
+
+      <!-- Mini bar chart -->
+      <div style="background: #FFFFFF; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: end; gap: 3px; height: 60px;">
+          <div style="flex: 1; background: #DAF1DE; height: 30%; border-radius: 2px 2px 0 0;"></div>
+          <div style="flex: 1; background: #DAF1DE; height: 45%; border-radius: 2px 2px 0 0;"></div>
+          <div style="flex: 1; background: #DAF1DE; height: 25%; border-radius: 2px 2px 0 0;"></div>
+          <div style="flex: 1; background: #DAF1DE; height: 55%; border-radius: 2px 2px 0 0;"></div>
+          <div style="flex: 1; background: #DAF1DE; height: 40%; border-radius: 2px 2px 0 0;"></div>
+          <div style="flex: 1; background: #DAF1DE; height: 65%; border-radius: 2px 2px 0 0;"></div>
+          <div style="flex: 1; background: #DAF1DE; height: 50%; border-radius: 2px 2px 0 0;"></div>
+          <div style="flex: 1; background: #DAF1DE; height: 70%; border-radius: 2px 2px 0 0;"></div>
+          <div style="flex: 1; background: #DAF1DE; height: 55%; border-radius: 2px 2px 0 0;"></div>
+          <div style="flex: 1; background: #235347; height: 100%; border-radius: 2px 2px 0 0;"></div>
+          <div style="flex: 1; background: #DAF1DE; height: 60%; border-radius: 2px 2px 0 0;"></div>
+          <div style="flex: 1; background: #DAF1DE; height: 45%; border-radius: 2px 2px 0 0;"></div>
+        </div>
+      </div>
+
+      <a href="#contact" style="background: #051F20; color: #DAF1DE; padding: 14px 20px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: -0.01em; text-align: center; display: block;">BOOK AN INTRO CALL</a>
+
+      <!-- Footer of card -->
+      <div style="padding-top: 20px; border-top: 1px solid #E9E7E0; display: flex; align-items: center; gap: 10px;">
+        <div style="width: 32px; height: 32px; background: #051F20; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; color: #DAF1DE; letter-spacing: -0.05em; position: relative;">
+          N<div style="position: absolute; bottom: 5px; right: 5px; width: 3px; height: 3px; background: #235347; border-radius: 50%;"></div>
+        </div>
+        <div>
+          <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: -0.02em;">North Intelligence</div>
+          <div style="font-size: 10px; color: #888;">Data consultancy, Stockholm.</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right main content -->
+    <main style="display: flex; flex-direction: column; gap: 24px;">
+
+      <!-- Top nav bar -->
+      <nav style="background: #FAFAF7; border-radius: 16px; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 32px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 28px; height: 28px; background: #051F20; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; color: #DAF1DE; letter-spacing: -0.05em; position: relative;">
+              N<div style="position: absolute; bottom: 4px; right: 4px; width: 3px; height: 3px; background: #235347; border-radius: 50%;"></div>
+            </div>
+            <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: -0.02em;">north<span style="color: #888;">·intelligence</span></div>
+          </div>
+          <div style="display: flex; gap: 24px;">
+            <a href="#work" class="mono" style="font-size: 11px; letter-spacing: 0.15em; color: #111; text-decoration: none;">WORK</a>
+            <a href="#approach" class="mono" style="font-size: 11px; letter-spacing: 0.15em; color: #111; text-decoration: none;">APPROACH</a>
+            <a href="#about" class="mono" style="font-size: 11px; letter-spacing: 0.15em; color: #111; text-decoration: none;">ABOUT</a>
+          </div>
+        </div>
+        <a href="#contact" style="background: #051F20; color: #DAF1DE; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 11px; letter-spacing: 0.1em;">GET IN TOUCH</a>
+      </nav>
+
+      <!-- Hero panel -->
+      <section style="background: #FAFAF7; border-radius: 20px; padding: 60px; display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: center; min-height: 440px;">
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div class="mono" style="font-size: 11px; letter-spacing: 0.2em; color: #235347;">— FREELANCE DATA CONSULTING</div>
+          <h1 style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 46px; line-height: 1.05; letter-spacing: -0.03em; margin: 0;">
+            Pipelines that don't rot.<br>
+            Dashboards that <span style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 500; color: #235347;">get read.</span>
+          </h1>
+          <p style="font-size: 16px; line-height: 1.6; color: #555; margin: 0; max-width: 460px;">I help teams get from messy source data to production-grade analytics — modeling, orchestration, and the observability that makes dashboards actually trustworthy.</p>
+          <div style="display: flex; gap: 12px; margin-top: 8px;">
+            <a href="#work" style="background: #051F20; color: #DAF1DE; padding: 14px 22px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 13px;">See recent work →</a>
+            <a href="#approach" style="background: transparent; color: #051F20; padding: 14px 22px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 13px; border: 1px solid #051F20;">How I work</a>
+          </div>
+        </div>
+
+        <!-- Dashboard mockup -->
+        <div style="background: #051F20; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px; color: #DAF1DE;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <div style="width: 6px; height: 6px; background: #8EB69B; border-radius: 50%;"></div>
+              <div class="mono" style="font-size: 9px; letter-spacing: 0.15em; color: #8EB69B;">PIPELINE · LIVE</div>
+            </div>
+            <div class="mono" style="font-size: 9px; color: #8EB69B;">14:22</div>
+          </div>
+          <div>
+            <div class="mono" style="font-size: 10px; color: #8EB69B; letter-spacing: 0.1em;">MONTHLY ACTIVE</div>
+            <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 32px; letter-spacing: -0.02em; color: #FFFFFF; margin-top: 4px;">128,402</div>
+            <div class="mono" style="font-size: 10px; color: #8EB69B; margin-top: 2px;">▲ 4.19% vs. last month</div>
+          </div>
+          <!-- Chart -->
+          <svg width="100%" height="80" viewBox="0 0 320 80" fill="none" preserveAspectRatio="none">
+            <polyline points="0,60 30,55 60,50 90,58 120,45 150,48 180,38 210,42 240,30 270,22 300,18 320,12" stroke="#DAF1DE" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            <circle cx="320" cy="12" r="4" fill="#DAF1DE"/>
+          </svg>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding-top: 12px; border-top: 1px solid #163832;">
+            <div>
+              <div class="mono" style="font-size: 8px; color: #8EB69B; letter-spacing: 0.1em;">DBT MODELS</div>
+              <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; color: #FFFFFF; margin-top: 2px;">247</div>
+            </div>
+            <div>
+              <div class="mono" style="font-size: 8px; color: #8EB69B; letter-spacing: 0.1em;">FRESHNESS</div>
+              <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; color: #FFFFFF; margin-top: 2px;">99.4%</div>
+            </div>
+            <div>
+              <div class="mono" style="font-size: 8px; color: #8EB69B; letter-spacing: 0.1em;">TESTS</div>
+              <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; color: #FFFFFF; margin-top: 2px;">1,204</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Two feature panels below -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+
+        <!-- Panel 1: Services -->
+        <section style="background: #FAFAF7; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 24px;">
+          <div class="mono" style="font-size: 11px; letter-spacing: 0.2em; color: #235347;">— WHAT I DO</div>
+          <h2 style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 28px; letter-spacing: -0.03em; line-height: 1.1; margin: 0;">Four things,<br>done properly.</h2>
+          <div style="display: flex; flex-direction: column; gap: 0;">
+            <div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid #E9E7E0;">
+              <div class="mono" style="font-size: 10px; color: #888; letter-spacing: 0.15em; width: 32px; flex-shrink: 0; padding-top: 3px;">01</div>
+              <div>
+                <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: -0.02em;">Data modeling · dbt</div>
+                <div style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 2px;">Warehouse-native models that a new hire can read in an afternoon.</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid #E9E7E0;">
+              <div class="mono" style="font-size: 10px; color: #888; letter-spacing: 0.15em; width: 32px; flex-shrink: 0; padding-top: 3px;">02</div>
+              <div>
+                <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: -0.02em;">Orchestration & ELT</div>
+                <div style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 2px;">Airflow, Dagster, Fivetran — whatever your stack, wired to alert before it breaks.</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid #E9E7E0;">
+              <div class="mono" style="font-size: 10px; color: #888; letter-spacing: 0.15em; width: 32px; flex-shrink: 0; padding-top: 3px;">03</div>
+              <div>
+                <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: -0.02em;">Analytics & dashboards</div>
+                <div style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 2px;">Metabase, Looker, Superset. Fewer charts, more decisions.</div>
+              </div>
+            </div>
+            <div style="display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid #E9E7E0; border-bottom: 1px solid #E9E7E0;">
+              <div class="mono" style="font-size: 10px; color: #888; letter-spacing: 0.15em; width: 32px; flex-shrink: 0; padding-top: 3px;">04</div>
+              <div>
+                <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: -0.02em;">Team enablement</div>
+                <div style="font-size: 13px; color: #666; line-height: 1.5; margin-top: 2px;">Code review, hiring, structure — the stuff that keeps the practice healthy after I leave.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Panel 2: How I work -->
+        <section style="background: #FAFAF7; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 24px;">
+          <div class="mono" style="font-size: 11px; letter-spacing: 0.2em; color: #235347;">— HOW IT GOES</div>
+          <h2 style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 28px; letter-spacing: -0.03em; line-height: 1.1; margin: 0;">Small engagements,<br>real handover.</h2>
+
+          <!-- Code-terminal style block -->
+          <div style="background: #051F20; border-radius: 12px; padding: 20px; color: #DAF1DE; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; flex: 1;">
+            <div style="color: #8EB69B;">$ north-intelligence --engagement</div>
+            <div style="color: #DAF1DE;">→ 6–12 week fixed scope</div>
+            <div style="color: #DAF1DE;">→ 2 sprints, 2 checkpoints</div>
+            <div style="color: #DAF1DE;">→ Ends with docs + handoff</div>
+            <div style="margin-top: 12px; color: #8EB69B;">$ availability</div>
+            <div style="color: #DAF1DE;">→ Q3 2026 · 2 slots open</div>
+            <div style="color: #DAF1DE;">→ Remote or Stockholm HQ</div>
+            <div style="margin-top: 12px; color: #8EB69B;">$ rates</div>
+            <div style="color: #DAF1DE;">→ Available on request</div>
+            <div style="color: #DAF1DE;">→ SEK invoicing (AB)</div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 8px;">
+            <div class="mono" style="font-size: 10px; color: #888; letter-spacing: 0.15em;">TYPICAL LEAD TIME · 3 WEEKS</div>
+            <a href="#contact" style="color: #051F20; text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: -0.01em;">Start a conversation →</a>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Selected work strip -->
+      <section style="background: #FAFAF7; border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: end;">
+          <div>
+            <div class="mono" style="font-size: 11px; letter-spacing: 0.2em; color: #235347;">— SELECTED WORK</div>
+            <h2 style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 28px; letter-spacing: -0.03em; margin: 12px 0 0;">A few things I've shipped.</h2>
+          </div>
+          <a href="#" class="mono" style="font-size: 11px; color: #888; text-decoration: none; letter-spacing: 0.1em;">VIEW ALL →</a>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+          <div style="border: 1px solid #E9E7E0; border-radius: 12px; padding: 20px; background: #fff;">
+            <div class="mono" style="font-size: 10px; color: #235347; letter-spacing: 0.15em;">FINTECH · 2025</div>
+            <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.02em; margin-top: 10px; line-height: 1.3;">Rebuilt a reporting stack that finance actually trusts.</div>
+            <div style="font-size: 12px; color: #666; margin-top: 8px; line-height: 1.5;">dbt · Snowflake · Metabase</div>
+          </div>
+          <div style="border: 1px solid #E9E7E0; border-radius: 12px; padding: 20px; background: #fff;">
+            <div class="mono" style="font-size: 10px; color: #235347; letter-spacing: 0.15em;">B2B SAAS · 2024</div>
+            <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.02em; margin-top: 10px; line-height: 1.3;">Product analytics from zero, in six weeks.</div>
+            <div style="font-size: 12px; color: #666; margin-top: 8px; line-height: 1.5;">Segment · BigQuery · Looker</div>
+          </div>
+          <div style="border: 1px solid #E9E7E0; border-radius: 12px; padding: 20px; background: #fff;">
+            <div class="mono" style="font-size: 10px; color: #235347; letter-spacing: 0.15em;">MARKETPLACE · 2024</div>
+            <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: -0.02em; margin-top: 10px; line-height: 1.3;">Data quality SLA that pages the right person.</div>
+            <div style="font-size: 12px; color: #666; margin-top: 8px; line-height: 1.5;">Airflow · dbt tests · PagerDuty</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer style="background: #051F20; border-radius: 20px; padding: 40px; display: flex; justify-content: space-between; align-items: center; color: #DAF1DE;">
+        <div>
+          <div style="font-family: 'Fraunces', serif; font-weight: 500; font-size: 26px; letter-spacing: -0.02em; line-height: 1.15;">The signal,<br><span style="font-style: italic;">not the noise.</span></div>
+          <div class="mono" style="font-size: 11px; color: #8EB69B; letter-spacing: 0.15em; margin-top: 20px;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="42110b0f0d0c020c0d10160a0b0c16070e0e0b05070c01076c1107">[email&#160;protected]</a></div>
+        </div>
+        <div style="text-align: right;">
+          <div style="width: 56px; height: 56px; background: #DAF1DE; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px; color: #051F20; letter-spacing: -0.05em; position: relative; margin-left: auto;">
+            N<div style="position: absolute; bottom: 9px; right: 9px; width: 5px; height: 5px; background: #235347; border-radius: 50%;"></div>
+          </div>
+          <div class="mono" style="font-size: 10px; color: #8EB69B; letter-spacing: 0.15em; margin-top: 16px;">© 2026 · NORTH INTELLIGENCE AB</div>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+</div>
+
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>North Intelligence — Datakonsult · Microsoft Fabric &amp; Power BI</title>
+<meta name="description" content="Oberoende datakonsult i Stockholm. North Intelligence sänker era Microsoft Fabric-kostnader och gör era ETL-flöden snabbare — med en endags granskning och en konkret åtgärdsplan.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="canonical" href="https://northintelligence.se/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="North Intelligence — Datakonsult · Microsoft Fabric &amp; Power BI">
+<meta property="og:description" content="Oberoende datakonsult i Stockholm. Vi sänker era Microsoft Fabric-kostnader och gör era ETL-flöden snabbare — med en endags granskning och en konkret åtgärdsplan.">
+<meta property="og:url" content="https://northintelligence.se/">
+<meta property="og:locale" content="sv_SE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #051F20;
+    --pine: #163832;
+    --moss: #235347;
+    --sage: #8EB69B;
+    --mint: #DAF1DE;
+    --paper: #FAFAF7;
+    --line: #E9E7E0;
+    --ink: #111111;
+    --body: #555555;
+    --mute: #888888;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--line);
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--moss);
+  }
+  .panel { background: var(--paper); border-radius: 20px; }
+  h1, h2 { margin: 0; }
+
+  .wrap { min-height: 100vh; padding: 40px 40px 24px; }
+  .layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 24px;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Left floating card */
+  .side {
+    background: var(--paper);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 40px;
+  }
+  .side-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .side-headline span { color: var(--moss); }
+  .side p { font-size: 13px; line-height: 1.5; color: var(--body); margin: 0; }
+  .side-chart { background: #FFFFFF; border-radius: 12px; padding: 20px; }
+  .bars { display: flex; align-items: end; gap: 3px; height: 60px; }
+  .bars div { flex: 1; background: var(--mint); border-radius: 2px 2px 0 0; }
+  .bars .hi { background: var(--moss); }
+
+  .btn {
+    background: var(--forest);
+    color: var(--mint);
+    padding: 14px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    display: block;
+  }
+  .side-foot {
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Logo mark */
+  .mark {
+    background: var(--forest);
+    color: var(--mint);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .mark .dot { position: absolute; background: var(--moss); border-radius: 50%; }
+  .mark-32 { width: 32px; height: 32px; font-size: 16px; }
+  .mark-32 .dot { bottom: 5px; right: 5px; width: 3px; height: 3px; }
+  .mark-28 { width: 28px; height: 28px; font-size: 14px; border-radius: 6px; }
+  .mark-28 .dot { bottom: 4px; right: 4px; width: 3px; height: 3px; }
+  .mark-56 { width: 56px; height: 56px; font-size: 28px; border-radius: 12px; background: var(--mint); color: var(--forest); }
+  .mark-56 .dot { bottom: 9px; right: 9px; width: 5px; height: 5px; }
+
+  /* Main column */
+  .main { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+
+  nav.bar {
+    background: var(--paper);
+    border-radius: 16px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .nav-left { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-name { font-weight: 600; font-size: 15px; letter-spacing: -0.02em; white-space: nowrap; }
+  .brand-name span { color: var(--mute); }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .btn-nav {
+    background: var(--forest);
+    color: var(--mint);
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    align-items: center;
+    min-height: 440px;
+  }
+  .hero-copy { display: flex; flex-direction: column; gap: 24px; }
+  .hero h1 {
+    font-weight: 600;
+    font-size: 46px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .hero h1 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--moss);
+  }
+  .hero p { font-size: 16px; line-height: 1.6; color: var(--body); margin: 0; max-width: 460px; }
+  .hero-ctas { display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
+  .btn-hero {
+    background: var(--forest);
+    color: var(--mint);
+    padding: 14px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--forest);
+    padding: 14px 22px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    border: 1px solid var(--forest);
+  }
+
+  /* Dashboard mockup */
+  .dash {
+    background: var(--forest);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    color: var(--mint);
+  }
+  .dash-top { display: flex; justify-content: space-between; align-items: center; }
+  .live { display: flex; align-items: center; gap: 6px; }
+  .live .led { width: 6px; height: 6px; background: var(--sage); border-radius: 50%; }
+  .dash .lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--sage); }
+  .dash-metric-lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--sage); letter-spacing: 0.1em; }
+  .dash-metric { font-weight: 600; font-size: 32px; letter-spacing: -0.02em; color: #FFFFFF; margin-top: 4px; }
+  .dash-delta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--sage); margin-top: 2px; }
+  .dash-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--pine);
+  }
+  .dash-stats .lbl { font-size: 8px; letter-spacing: 0.1em; }
+  .dash-stats .val { font-weight: 600; font-size: 14px; color: #FFFFFF; margin-top: 2px; }
+
+  /* Feature panels */
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .feature { padding: 40px; display: flex; flex-direction: column; gap: 24px; }
+  .feature h2 { font-weight: 600; font-size: 28px; letter-spacing: -0.03em; line-height: 1.1; }
+  .svc { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
+  .svc:last-child { border-bottom: 1px solid var(--line); }
+  .svc .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--mute);
+    letter-spacing: 0.15em;
+    width: 32px;
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+  .svc h3 { font-weight: 600; font-size: 14px; letter-spacing: -0.02em; margin: 0; }
+  .svc p { font-size: 13px; color: #666; line-height: 1.5; margin: 2px 0 0; }
+
+  .terminal {
+    background: var(--forest);
+    border-radius: 12px;
+    padding: 20px;
+    color: var(--mint);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    flex: 1;
+  }
+  .terminal .cmd { color: var(--sage); }
+  .terminal .gap { margin-top: 12px; }
+  .feature-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-top: 8px;
+    flex-wrap: wrap;
+  }
+  .feature-foot .tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--mute); letter-spacing: 0.15em; }
+  .feature-foot a { color: var(--forest); text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: -0.01em; }
+
+  /* About */
+  .about { padding: 40px; display: flex; flex-direction: column; gap: 24px; }
+  .about h2 { font-weight: 600; font-size: 28px; letter-spacing: -0.03em; margin-top: 12px; }
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: start; }
+  .about-grid > p { font-size: 15px; line-height: 1.7; color: #444; margin: 0; max-width: 560px; }
+  .facts { border: 1px solid var(--line); border-radius: 12px; background: #fff; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+  .fact .k { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--mute); }
+  .fact .v { font-size: 13px; font-weight: 500; margin-top: 3px; line-height: 1.5; }
+  .fact a { color: var(--moss); font-weight: 600; text-decoration: none; }
+
+  /* Footer */
+  footer.site {
+    background: var(--forest);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    color: var(--mint);
+    flex-wrap: wrap;
+  }
+  .foot-tag {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .foot-tag em { font-style: italic; }
+  .foot-mail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--sage);
+    letter-spacing: 0.15em;
+    margin-top: 20px;
+  }
+  .foot-mail a { color: var(--sage); text-decoration: none; }
+  .foot-right { text-align: right; }
+  .foot-right .mark-56 { margin-left: auto; }
+  .foot-legal { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--sage); letter-spacing: 0.15em; margin-top: 16px; }
+
+  .colophon {
+    max-width: 1400px;
+    margin: 16px auto 0;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--mute);
+    letter-spacing: 0.1em;
+  }
+
+  /* Responsive */
+  @media (max-width: 1000px) {
+    .wrap { padding: 20px 16px 16px; }
+    .layout { grid-template-columns: 1fr; }
+    .side { position: static; order: 2; }
+    .main { order: 1; }
+    .hero { grid-template-columns: 1fr; padding: 36px 28px; min-height: 0; }
+    .hero h1 { font-size: clamp(30px, 6.5vw, 46px); }
+    .duo { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .nav-left { gap: 14px; }
+    .nav-links { gap: 14px; }
+    .hero { padding: 28px 20px; }
+    .feature, .about, footer.site { padding: 28px 20px; }
+    .foot-right { text-align: left; }
+    .foot-right .mark-56 { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="layout">
+
+    <!-- Left floating card -->
+    <aside class="side">
+      <div class="side-headline"><span>Sänk</span> era<br>Fabric-kostnader.</div>
+      <p>Oberoende datakonsult för företag som kör Microsoft Fabric och Power BI — och vill få ut mer, för mindre.</p>
+
+      <div class="side-chart" aria-hidden="true">
+        <div class="bars">
+          <div style="height:30%"></div>
+          <div style="height:45%"></div>
+          <div style="height:25%"></div>
+          <div style="height:55%"></div>
+          <div style="height:40%"></div>
+          <div style="height:65%"></div>
+          <div style="height:50%"></div>
+          <div style="height:70%"></div>
+          <div style="height:55%"></div>
+          <div class="hi" style="height:100%"></div>
+          <div style="height:60%"></div>
+          <div style="height:45%"></div>
+        </div>
+      </div>
+
+      <a class="btn" href="mailto:simon.stenlund@northintelligence.se?subject=Introsamtal%20%E2%80%93%20North%20Intelligence">BOKA ETT INTROSAMTAL</a>
+
+      <div class="side-foot">
+        <div class="mark mark-32">N<div class="dot"></div></div>
+        <div>
+          <div style="font-weight:600;font-size:13px;letter-spacing:-0.02em;">North Intelligence</div>
+          <div style="font-size:10px;color:var(--mute);">Datakonsult, Stockholm.</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right main content -->
+    <main class="main">
+
+      <!-- Top nav bar -->
+      <nav class="bar">
+        <div class="nav-left">
+          <div class="brand">
+            <div class="mark mark-28">N<div class="dot"></div></div>
+            <div class="brand-name">north<span>·intelligence</span></div>
+          </div>
+          <div class="nav-links">
+            <a href="#tjanster">TJÄNSTER</a>
+            <a href="#granskning">GRANSKNING</a>
+            <a href="#om">OM</a>
+          </div>
+        </div>
+        <a class="btn-nav" href="mailto:simon.stenlund@northintelligence.se?subject=Kontakt%20%E2%80%93%20North%20Intelligence">KONTAKT</a>
+      </nav>
+
+      <!-- Hero panel -->
+      <section class="panel hero">
+        <div class="hero-copy">
+          <div class="kicker">— DATAKONSULT · MICROSOFT FABRIC &amp; POWER BI</div>
+          <h1>Rätt kapacitet. Snabbare flöden.<br>Rapporter som <em>går att lita på.</em></h1>
+          <p>Jag hjälper företag att sänka sina Microsoft Fabric-kostnader och göra sina ETL-flöden snabbare — med en oberoende genomgång av dataplattformen och en konkret åtgärdsplan.</p>
+          <div class="hero-ctas">
+            <a class="btn-hero" href="#granskning">Läs om granskningen →</a>
+            <a class="btn-ghost" href="#tjanster">Vad jag gör</a>
+          </div>
+        </div>
+
+        <!-- Dashboard mockup (decorative) -->
+        <div class="dash" aria-hidden="true">
+          <div class="dash-top">
+            <div class="live">
+              <div class="led"></div>
+              <div class="lbl">KAPACITET · LIVE</div>
+            </div>
+            <div class="lbl" style="letter-spacing:0;">14:22</div>
+          </div>
+          <div>
+            <div class="dash-metric-lbl">CU-FÖRBRUKNING / DYGN</div>
+            <div class="dash-metric">38 412</div>
+            <div class="dash-delta">▼ 9,2 % vs. förra månaden</div>
+          </div>
+          <svg width="100%" height="80" viewBox="0 0 320 80" fill="none" preserveAspectRatio="none">
+            <polyline points="0,14 30,20 60,16 90,26 120,24 150,34 180,30 210,42 240,40 270,52 300,56 320,62" stroke="#DAF1DE" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            <circle cx="320" cy="62" r="4" fill="#DAF1DE"/>
+          </svg>
+          <div class="dash-stats">
+            <div>
+              <div class="lbl">PIPELINES</div>
+              <div class="val">47</div>
+            </div>
+            <div>
+              <div class="lbl">LYCKADE KÖRNINGAR</div>
+              <div class="val">99,6 %</div>
+            </div>
+            <div>
+              <div class="lbl">DATATESTER</div>
+              <div class="val">312</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Two feature panels -->
+      <div class="duo">
+
+        <!-- Tjänster -->
+        <section id="tjanster" class="panel feature">
+          <div class="kicker">— VAD JAG GÖR</div>
+          <h2>Fyra saker,<br>ordentligt gjorda.</h2>
+          <div>
+            <div class="svc">
+              <div class="num">01</div>
+              <div>
+                <h3>Kostnadsoptimering i Fabric</h3>
+                <p>Rätt kapacitetsnivå och rätt arkitektur som sänker CU-förbrukningen — utan att verksamheten märker något annat än snabbare rapporter.</p>
+              </div>
+            </div>
+            <div class="svc">
+              <div class="num">02</div>
+              <div>
+                <h3>Dataarkitektur &amp; ETL</h3>
+                <p>Microsoft Fabric, Azure Data Factory, Synapse. Flöden som är snabba, övervakade och byggda för att kunna ärvas av nästa person.</p>
+              </div>
+            </div>
+            <div class="svc">
+              <div class="num">03</div>
+              <div>
+                <h3>Semantiska modeller &amp; Power BI</h3>
+                <p>Modeller som går att underhålla och rapporter som verksamheten faktiskt använder — och litar på.</p>
+              </div>
+            </div>
+            <div class="svc">
+              <div class="num">04</div>
+              <div>
+                <h3>Rådgivning — IT och verksamhet</h3>
+                <p>Arkitekturbeslut, prioriteringar och en datapraktik som håller över tid. Samma samtal fungerar med både CTO:n och CFO:n.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Granskningen -->
+        <section id="granskning" class="panel feature">
+          <div class="kicker">— KOM IGÅNG</div>
+          <h2>En dags granskning,<br>en konkret åtgärdsplan.</h2>
+
+          <div class="terminal">
+            <div class="cmd">$ north-intelligence --granskning</div>
+            <div>→ 1 dag · på plats eller remote</div>
+            <div>→ Genomgång av Fabric-miljö + Power BI</div>
+            <div>→ Skriftlig, prioriterad åtgärdsplan</div>
+            <div class="cmd gap">$ omfattning</div>
+            <div>→ Kapacitetskostnad &amp; arkitektur</div>
+            <div>→ ETL-prestanda &amp; semantiska modeller</div>
+            <div>→ Rapporternas tillförlitlighet</div>
+            <div class="cmd gap">$ resultat</div>
+            <div>→ Konkreta åtgärder, i prioritetsordning</div>
+            <div>→ Er plattform, era beslut — inga bindningar</div>
+          </div>
+
+          <div class="feature-foot">
+            <div class="tag">OBEROENDE GENOMGÅNG · EN DAG</div>
+            <a href="mailto:simon.stenlund@northintelligence.se?subject=Granskning%20av%20Fabric%20%26%20Power%20BI">Boka en granskning →</a>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Om -->
+      <section id="om" class="panel about">
+        <div>
+          <div class="kicker">— OM</div>
+          <h2>En senior konsult. Direkt.</h2>
+        </div>
+        <div class="about-grid">
+          <p>North Intelligence drivs av <strong>Simon Stenlund</strong> — tidigare team lead för en Microsoft Data Analytics-enhet i Stockholm. Arkitekt och byggare på Microsoft Fabric, Azure Data Factory, Synapse och Power BI, hela vägen från datainläsning till rapporterna som verksamheten fattar beslut på. Styrkan är att överbrygga gapet mellan IT och verksamheten — så att plattformen inte bara är tekniskt rätt, utan faktiskt används.</p>
+          <div class="facts">
+            <div class="fact">
+              <div class="k">BAKGRUND</div>
+              <div class="v">Team lead, Microsoft Data Analytics-enhet · Stockholm</div>
+            </div>
+            <div class="fact">
+              <div class="k">STACK</div>
+              <div class="v">Microsoft Fabric · Azure Data Factory · Synapse · Power BI</div>
+            </div>
+            <div class="fact">
+              <div class="k">LINKEDIN</div>
+              <div class="v"><a href="https://www.linkedin.com/in/simonstenlund/" rel="me">linkedin.com/in/simonstenlund →</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site">
+        <div>
+          <div class="foot-tag">Signalen,<br><em>inte bruset.</em></div>
+          <div class="foot-mail"><a href="mailto:simon.stenlund@northintelligence.se">SIMON.STENLUND@NORTHINTELLIGENCE.SE</a></div>
+        </div>
+        <div class="foot-right">
+          <div class="mark mark-56">N<div class="dot"></div></div>
+          <div class="foot-legal">© 2026 · NORTH INTELLIGENCE AB</div>
+        </div>
+      </footer>
+
+    </main>
+  </div>
+</div>
+
+</body>
+</html>
