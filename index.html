@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>North Intelligence — Datakonsult · Microsoft Fabric &amp; Power BI</title>
-<meta name="description" content="Oberoende datakonsult i Stockholm. North Intelligence sänker era Microsoft Fabric-kostnader och gör era ETL-flöden snabbare — med en endags granskning och en konkret åtgärdsplan.">
+<title>North Intelligence — Datakonsult · Microsoft Fabric</title>
+<meta name="description" content="Oberoende datakonsult i Stockholm. North Intelligence sänker era Microsoft Fabric-kostnader och gör era ETL-flöden snabbare — med en endags Fabric-audit och en konkret åtgärdsplan.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="canonical" href="https://northintelligence.se/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="North Intelligence — Datakonsult · Microsoft Fabric &amp; Power BI">
-<meta property="og:description" content="Oberoende datakonsult i Stockholm. Vi sänker era Microsoft Fabric-kostnader och gör era ETL-flöden snabbare — med en endags granskning och en konkret åtgärdsplan.">
+<meta property="og:title" content="North Intelligence — Datakonsult · Microsoft Fabric">
+<meta property="og:description" content="Oberoende datakonsult i Stockholm. Vi sänker era Microsoft Fabric-kostnader och gör era ETL-flöden snabbare — med en endags Fabric-audit och en konkret åtgärdsplan.">
 <meta property="og:url" content="https://northintelligence.se/">
 <meta property="og:locale" content="sv_SE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +50,7 @@
   .wrap { min-height: 100vh; padding: 40px 40px 24px; }
   .layout {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 1fr;
     gap: 24px;
     align-items: start;
     max-width: 1400px;
@@ -58,49 +58,46 @@
     width: 100%;
   }
 
-  /* Left floating card */
-  .side {
-    background: var(--paper);
-    border-radius: 20px;
-    padding: 28px;
+  /* Contact form */
+  .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    position: sticky;
-    top: 40px;
+    gap: 16px;
+    max-width: 480px;
   }
-  .side-headline {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-  }
-  .side-headline span { color: var(--moss); }
-  .side p { font-size: 13px; line-height: 1.5; color: var(--body); margin: 0; }
-  .side-chart { background: #FFFFFF; border-radius: 12px; padding: 20px; }
-  .bars { display: flex; align-items: end; gap: 3px; height: 60px; }
-  .bars div { flex: 1; background: var(--mint); border-radius: 2px 2px 0 0; }
-  .bars .hi { background: var(--moss); }
-
-  .btn {
-    background: var(--forest);
-    color: var(--mint);
-    padding: 14px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: -0.01em;
-    text-align: center;
-    display: block;
-  }
-  .side-foot {
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
+  .form-group {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-group label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--mute);
+  }
+  .form-group input,
+  .form-group textarea {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--moss);
+  }
+  .contact-form button {
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
   }
 
   /* Logo mark */
@@ -330,8 +327,6 @@
   @media (max-width: 1000px) {
     .wrap { padding: 20px 16px 16px; }
     .layout { grid-template-columns: 1fr; }
-    .side { position: static; order: 2; }
-    .main { order: 1; }
     .hero { grid-template-columns: 1fr; padding: 36px 28px; min-height: 0; }
     .hero h1 { font-size: clamp(30px, 6.5vw, 46px); }
     .duo { grid-template-columns: 1fr; }
@@ -352,40 +347,7 @@
 <div class="wrap">
   <div class="layout">
 
-    <!-- Left floating card -->
-    <aside class="side">
-      <div class="side-headline"><span>Sänk</span> era<br>Fabric-kostnader.</div>
-      <p>Oberoende datakonsult för företag som kör Microsoft Fabric och Power BI — och vill få ut mer, för mindre.</p>
-
-      <div class="side-chart" aria-hidden="true">
-        <div class="bars">
-          <div style="height:30%"></div>
-          <div style="height:45%"></div>
-          <div style="height:25%"></div>
-          <div style="height:55%"></div>
-          <div style="height:40%"></div>
-          <div style="height:65%"></div>
-          <div style="height:50%"></div>
-          <div style="height:70%"></div>
-          <div style="height:55%"></div>
-          <div class="hi" style="height:100%"></div>
-          <div style="height:60%"></div>
-          <div style="height:45%"></div>
-        </div>
-      </div>
-
-      <a class="btn" href="mailto:simon.stenlund@northintelligence.se?subject=Introsamtal%20%E2%80%93%20North%20Intelligence">BOKA ETT INTROSAMTAL</a>
-
-      <div class="side-foot">
-        <div class="mark mark-32">N<div class="dot"></div></div>
-        <div>
-          <div style="font-weight:600;font-size:13px;letter-spacing:-0.02em;">North Intelligence</div>
-          <div style="font-size:10px;color:var(--mute);">Datakonsult, Stockholm.</div>
-        </div>
-      </div>
-    </aside>
-
-    <!-- Right main content -->
+    <!-- Main content -->
     <main class="main">
 
       <!-- Top nav bar -->
@@ -397,22 +359,21 @@
           </div>
           <div class="nav-links">
             <a href="#tjanster">TJÄNSTER</a>
-            <a href="#granskning">GRANSKNING</a>
+            <a href="#audit">FABRIC-AUDIT</a>
             <a href="#om">OM</a>
           </div>
         </div>
-        <a class="btn-nav" href="mailto:simon.stenlund@northintelligence.se?subject=Kontakt%20%E2%80%93%20North%20Intelligence">KONTAKT</a>
+        <a class="btn-nav" href="#kontakt">KONTAKT</a>
       </nav>
 
       <!-- Hero panel -->
       <section class="panel hero">
         <div class="hero-copy">
-          <div class="kicker">— DATAKONSULT · MICROSOFT FABRIC &amp; POWER BI</div>
-          <h1>Rätt kapacitet. Snabbare flöden.<br>Rapporter som <em>går att lita på.</em></h1>
-          <p>Jag hjälper företag att sänka sina Microsoft Fabric-kostnader och göra sina ETL-flöden snabbare — med en oberoende genomgång av dataplattformen och en konkret åtgärdsplan.</p>
+          <div class="kicker">— DATAKONSULT · MICROSOFT FABRIC</div>
+          <h1>Rätt kapacitet. Snabbare flöden.<br>Data som <em>går att lita på.</em></h1>
+          <p>Vi hjälper företag att sänka sina Microsoft Fabric-kostnader och göra sina ETL-flöden snabbare — med en oberoende genomgång av dataplattformen och en konkret åtgärdsplan.</p>
           <div class="hero-ctas">
-            <a class="btn-hero" href="#granskning">Läs om granskningen →</a>
-            <a class="btn-ghost" href="#tjanster">Vad jag gör</a>
+            <a class="btn-hero" href="#audit">Läs om vår Fabric-audit →</a>
           </div>
         </div>
 
@@ -421,13 +382,13 @@
           <div class="dash-top">
             <div class="live">
               <div class="led"></div>
-              <div class="lbl">KAPACITET · LIVE</div>
+              <div class="lbl">KAPACITET</div>
             </div>
             <div class="lbl" style="letter-spacing:0;">14:22</div>
           </div>
           <div>
             <div class="dash-metric-lbl">CU-FÖRBRUKNING / DYGN</div>
-            <div class="dash-metric">38 412</div>
+            <div class="dash-metric">284 610</div>
             <div class="dash-delta">▼ 9,2 % vs. förra månaden</div>
           </div>
           <svg width="100%" height="80" viewBox="0 0 320 80" fill="none" preserveAspectRatio="none">
@@ -456,14 +417,14 @@
 
         <!-- Tjänster -->
         <section id="tjanster" class="panel feature">
-          <div class="kicker">— VAD JAG GÖR</div>
-          <h2>Fyra saker,<br>ordentligt gjorda.</h2>
+          <div class="kicker">— VAD VI GÖR</div>
+          <h2>Tre saker,<br>ordentligt gjorda.</h2>
           <div>
             <div class="svc">
               <div class="num">01</div>
               <div>
                 <h3>Kostnadsoptimering i Fabric</h3>
-                <p>Rätt kapacitetsnivå och rätt arkitektur som sänker CU-förbrukningen — utan att verksamheten märker något annat än snabbare rapporter.</p>
+                <p>Rätt kapacitetsnivå och rätt arkitektur som sänker CU-förbrukningen — utan att verksamheten märker något annat än snabbare dataflöden.</p>
               </div>
             </div>
             <div class="svc">
@@ -476,13 +437,6 @@
             <div class="svc">
               <div class="num">03</div>
               <div>
-                <h3>Semantiska modeller &amp; Power BI</h3>
-                <p>Modeller som går att underhålla och rapporter som verksamheten faktiskt använder — och litar på.</p>
-              </div>
-            </div>
-            <div class="svc">
-              <div class="num">04</div>
-              <div>
                 <h3>Rådgivning — IT och verksamhet</h3>
                 <p>Arkitekturbeslut, prioriteringar och en datapraktik som håller över tid. Samma samtal fungerar med både CTO:n och CFO:n.</p>
               </div>
@@ -491,19 +445,19 @@
         </section>
 
         <!-- Granskningen -->
-        <section id="granskning" class="panel feature">
+        <section id="audit" class="panel feature">
           <div class="kicker">— KOM IGÅNG</div>
-          <h2>En dags granskning,<br>en konkret åtgärdsplan.</h2>
+          <h2>En dags Fabric-audit,<br>en konkret åtgärdsplan.</h2>
 
           <div class="terminal">
-            <div class="cmd">$ north-intelligence --granskning</div>
+            <div class="cmd">$ north-intelligence --fabric-audit</div>
             <div>→ 1 dag · på plats eller remote</div>
-            <div>→ Genomgång av Fabric-miljö + Power BI</div>
+            <div>→ Genomgång av er Fabric-miljö</div>
             <div>→ Skriftlig, prioriterad åtgärdsplan</div>
             <div class="cmd gap">$ omfattning</div>
             <div>→ Kapacitetskostnad &amp; arkitektur</div>
             <div>→ ETL-prestanda &amp; semantiska modeller</div>
-            <div>→ Rapporternas tillförlitlighet</div>
+            <div>→ Datakvalitet &amp; tillförlitlighet</div>
             <div class="cmd gap">$ resultat</div>
             <div>→ Konkreta åtgärder, i prioritetsordning</div>
             <div>→ Er plattform, era beslut — inga bindningar</div>
@@ -511,7 +465,7 @@
 
           <div class="feature-foot">
             <div class="tag">OBEROENDE GENOMGÅNG · EN DAG</div>
-            <a href="mailto:simon.stenlund@northintelligence.se?subject=Granskning%20av%20Fabric%20%26%20Power%20BI">Boka en granskning →</a>
+            <a href="#kontakt">Boka en Fabric-audit →</a>
           </div>
         </section>
 
@@ -520,33 +474,54 @@
       <!-- Om -->
       <section id="om" class="panel about">
         <div>
-          <div class="kicker">— OM</div>
-          <h2>En senior konsult. Direkt.</h2>
+          <div class="kicker">— OM OSS</div>
+          <h2>Seniora konsulter. Direkt.</h2>
         </div>
         <div class="about-grid">
-          <p>North Intelligence drivs av <strong>Simon Stenlund</strong> — tidigare team lead för en Microsoft Data Analytics-enhet i Stockholm. Arkitekt och byggare på Microsoft Fabric, Azure Data Factory, Synapse och Power BI, hela vägen från datainläsning till rapporterna som verksamheten fattar beslut på. Styrkan är att överbrygga gapet mellan IT och verksamheten — så att plattformen inte bara är tekniskt rätt, utan faktiskt används.</p>
+          <p>North Intelligence är ett oberoende datakonsultbolag i Stockholm med djup erfarenhet av Microsoft Fabric, Azure Data Factory och Synapse. Vi bygger och optimerar dataplattformar — hela vägen från datainläsning till de insikter verksamheten fattar beslut på. Vår styrka är att överbrygga gapet mellan IT och verksamheten — så att plattformen inte bara är tekniskt rätt, utan faktiskt används.</p>
           <div class="facts">
             <div class="fact">
-              <div class="k">BAKGRUND</div>
-              <div class="v">Team lead, Microsoft Data Analytics-enhet · Stockholm</div>
+              <div class="k">FOKUS</div>
+              <div class="v">Kostnadsoptimering &amp; dataarkitektur i Microsoft Fabric</div>
             </div>
             <div class="fact">
               <div class="k">STACK</div>
-              <div class="v">Microsoft Fabric · Azure Data Factory · Synapse · Power BI</div>
+              <div class="v">Microsoft Fabric · Azure Data Factory · Synapse</div>
             </div>
             <div class="fact">
               <div class="k">LINKEDIN</div>
-              <div class="v"><a href="https://www.linkedin.com/in/simonstenlund/" rel="me">linkedin.com/in/simonstenlund →</a></div>
+              <div class="v"><a href="https://www.linkedin.com/company/north-intelligence/" rel="me">North Intelligence på LinkedIn →</a></div>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- Contact form -->
+      <section id="kontakt" class="panel feature">
+        <div class="kicker">— KONTAKT</div>
+        <h2>Hör av er.</h2>
+        <p style="font-size:15px;line-height:1.6;color:var(--body);margin:0;max-width:460px;">Beskriv kort vad ni vill ha hjälp med så återkommer vi inom en arbetsdag.</p>
+        <form class="contact-form" action="https://formsubmit.co/simon.stenlund@northintelligence.se" method="POST">
+          <input type="hidden" name="_subject" value="Kontakt via northintelligence.se">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://northintelligence.se/">
+          <div class="form-group">
+            <label for="email">E-post</label>
+            <input type="email" id="email" name="email" required placeholder="er@mejladress.se">
+          </div>
+          <div class="form-group">
+            <label for="message">Meddelande</label>
+            <textarea id="message" name="message" required placeholder="Berätta kort om ert behov..." rows="5"></textarea>
+          </div>
+          <button type="submit" class="btn-hero">Skicka meddelande →</button>
+        </form>
+      </section>
+
       <!-- Footer -->
       <footer class="site">
         <div>
-          <div class="foot-tag">Signalen,<br><em>inte bruset.</em></div>
-          <div class="foot-mail"><a href="mailto:simon.stenlund@northintelligence.se">SIMON.STENLUND@NORTHINTELLIGENCE.SE</a></div>
+          <div class="foot-tag">Från data<br><em>till insikt.</em></div>
+          <div class="foot-mail"><a href="mailto:kontakt@northintelligence.se">KONTAKT@NORTHINTELLIGENCE.SE</a></div>
         </div>
         <div class="foot-right">
           <div class="mark mark-56">N<div class="dot"></div></div>
