@@ -280,6 +280,12 @@
   .fact .k { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--mute); }
   .fact .v { font-size: 13px; font-weight: 500; margin-top: 3px; line-height: 1.5; }
   .fact a { color: var(--moss); font-weight: 600; text-decoration: none; }
+  .facts.founder { padding: 0; gap: 0; overflow: hidden; }
+  .founder-photo { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+  .founder-body { padding: 20px 24px 24px; }
+  .founder-name { font-weight: 600; font-size: 16px; letter-spacing: -0.02em; }
+  .founder-role { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--mute); margin-top: 4px; }
+  .founder-contacts { border-top: 1px solid var(--line); margin-top: 14px; padding-top: 14px; display: flex; flex-direction: column; gap: 12px; }
 
   /* Footer */
   footer.site {
@@ -418,7 +424,7 @@
         <!-- Tjänster -->
         <section id="tjanster" class="panel feature">
           <div class="kicker">— VAD VI GÖR</div>
-          <h2>Tre saker,<br>ordentligt gjorda.</h2>
+          <h2>Fyra saker,<br>ordentligt gjorda.</h2>
           <div>
             <div class="svc">
               <div class="num">01</div>
@@ -431,7 +437,7 @@
               <div class="num">02</div>
               <div>
                 <h3>Dataarkitektur &amp; ETL</h3>
-                <p>Microsoft Fabric, Azure Data Factory, Synapse. Flöden som är snabba, övervakade och byggda för att kunna ärvas av nästa person.</p>
+                <p>Microsoft Fabric fullt ut — lakehouse, pipelines och medallion-arkitektur. Flöden som är snabba, övervakade och byggda för att kunna ärvas av nästa person.</p>
               </div>
             </div>
             <div class="svc">
@@ -439,6 +445,13 @@
               <div>
                 <h3>Rådgivning — IT och verksamhet</h3>
                 <p>Arkitekturbeslut, prioriteringar och en datapraktik som håller över tid. Samma samtal fungerar med både CTO:n och CFO:n.</p>
+              </div>
+            </div>
+            <div class="svc">
+              <div class="num">04</div>
+              <div>
+                <h3>AI-accelererad leverans</h3>
+                <p>Vi har ett eget tekniskt ramverk där vi nyttjar och skalar med AI i stället för med fler människor. Samma seniora omdöme — snabbare leverans.</p>
               </div>
             </div>
           </div>
@@ -478,19 +491,26 @@
           <h2>Seniora konsulter. Direkt.</h2>
         </div>
         <div class="about-grid">
-          <p>North Intelligence är ett oberoende datakonsultbolag i Stockholm med djup erfarenhet av Microsoft Fabric, Azure Data Factory och Synapse. Vi bygger och optimerar dataplattformar — hela vägen från datainläsning till de insikter verksamheten fattar beslut på. Vår styrka är att överbrygga gapet mellan IT och verksamheten — så att plattformen inte bara är tekniskt rätt, utan faktiskt används.</p>
-          <div class="facts">
-            <div class="fact">
-              <div class="k">FOKUS</div>
-              <div class="v">Kostnadsoptimering &amp; dataarkitektur i Microsoft Fabric</div>
-            </div>
-            <div class="fact">
-              <div class="k">STACK</div>
-              <div class="v">Microsoft Fabric · Azure Data Factory · Synapse</div>
-            </div>
-            <div class="fact">
-              <div class="k">LINKEDIN</div>
-              <div class="v"><a href="https://www.linkedin.com/company/north-intelligence/" rel="me">North Intelligence på LinkedIn →</a></div>
+          <p>North Intelligence är ett oberoende datakonsultbolag i Stockholm med djup erfarenhet av Microsoft Fabric. Vi bygger och optimerar dataplattformar — hela vägen från datainläsning till de insikter verksamheten fattar beslut på. Vår styrka är att överbrygga gapet mellan IT och verksamheten — så att plattformen inte bara är tekniskt rätt, utan faktiskt används.</p>
+          <div class="facts founder">
+            <img class="founder-photo" src="assets/simon-stenlund.jpg" alt="Simon Stenlund, grundare av North Intelligence" width="900" height="600" loading="lazy">
+            <div class="founder-body">
+              <div class="founder-name">Simon Stenlund</div>
+              <div class="founder-role">GRUNDARE</div>
+              <div class="founder-contacts">
+                <div class="fact">
+                  <div class="k">E-POST</div>
+                  <div class="v"><a href="mailto:simon.stenlund@northintelligence.se">simon.stenlund@northintelligence.se</a></div>
+                </div>
+                <div class="fact">
+                  <div class="k">LINKEDIN</div>
+                  <div class="v"><a href="https://www.linkedin.com/in/simonstenlund/" rel="me">Simon Stenlund på LinkedIn →</a></div>
+                </div>
+                <div class="fact">
+                  <div class="k">TELEFON</div>
+                  <div class="v"><a href="tel:+46738130519">073-813 05 19</a></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
