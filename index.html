@@ -231,45 +231,126 @@
   .dash-stats .val { font-weight: 600; font-size: 14px; color: #FFFFFF; margin-top: 2px; }
 
   /* Feature panels */
-  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   .feature { padding: 40px; display: flex; flex-direction: column; gap: 24px; }
   .feature h2 { font-weight: 600; font-size: 28px; letter-spacing: -0.03em; line-height: 1.1; }
-  .svc { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
-  .svc:last-child { border-bottom: 1px solid var(--line); }
+  .feature h2 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--moss);
+  }
+  .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .svc {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+  }
   .svc .num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     color: var(--mute);
     letter-spacing: 0.15em;
-    width: 32px;
+    width: 24px;
     flex-shrink: 0;
     padding-top: 3px;
   }
   .svc h3 { font-weight: 600; font-size: 14px; letter-spacing: -0.02em; margin: 0; }
   .svc p { font-size: 13px; color: #666; line-height: 1.5; margin: 2px 0 0; }
 
-  .terminal {
-    background: var(--forest);
-    border-radius: 12px;
-    padding: 20px;
-    color: var(--mint);
+  /* Fabric-audit */
+  .audit-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 40px; align-items: center; }
+  .audit-copy { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
+  .audit-copy p { font-size: 15px; line-height: 1.6; color: var(--body); margin: 0; max-width: 420px; }
+  .audit-note {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    line-height: 1.7;
-    flex: 1;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--mute);
   }
-  .terminal .cmd { color: var(--sage); }
-  .terminal .gap { margin-top: 12px; }
-  .feature-foot {
+  .scorecard { background: var(--forest); border-radius: 16px; padding: 22px; color: var(--mint); }
+  .score-head { display: flex; justify-content: space-between; align-items: center; }
+  .score-status { display: flex; align-items: center; gap: 7px; }
+  .score-status .led { width: 7px; height: 7px; background: var(--sage); border-radius: 50%; }
+  .score-status .led.run { animation: ledblink 1s infinite; }
+  @keyframes ledblink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+  .score-lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--sage); }
+  .score-rows { margin-top: 12px; }
+  .srow { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid var(--pine); }
+  .srow .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; transition: background 0.3s; }
+  .srow .area { flex: 1; }
+  .srow .name { font-size: 13px; font-weight: 600; color: #fff; }
+  .srow .verdict { font-size: 11px; color: var(--sage); margin-top: 1px; transition: opacity 0.4s; }
+  .srow .st {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    transition: color 0.3s;
+  }
+  .score-sum {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    border-top: 1px solid var(--pine);
+    padding-top: 12px;
+    margin-top: 2px;
+  }
+  .score-sum .lbl { font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.1em; color: var(--sage); }
+  .score-sum .val { font-weight: 600; font-size: 16px; color: #fff; margin-top: 2px; }
+
+  .plan { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px 24px; }
+  .plan-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 12px; gap: 12px; }
+  .plan-head .lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: var(--mute); }
+  .plan-item {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     gap: 12px;
-    padding-top: 8px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
     flex-wrap: wrap;
+    transition: opacity 0.5s, transform 0.5s;
   }
-  .feature-foot .tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--mute); letter-spacing: 0.15em; }
-  .feature-foot a { color: var(--forest); text-decoration: none; font-weight: 600; font-size: 13px; letter-spacing: -0.01em; }
+  .plan-item:last-child { border-bottom: none; padding-bottom: 2px; }
+  .plan-item.pending { opacity: 0; transform: translateY(10px); }
+  .prio {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 3px 7px;
+    border-radius: 5px;
+    flex-shrink: 0;
+    background: var(--forest);
+    color: var(--mint);
+  }
+  .prio.p2 { background: var(--moss); }
+  .prio.p3 { background: var(--sage); color: var(--forest); }
+  .plan-item .body { flex: 1; min-width: 200px; }
+  .plan-item h3 { font-weight: 600; font-size: 14px; letter-spacing: -0.02em; margin: 0; }
+  .plan-item p { font-size: 12px; color: #666; line-height: 1.5; margin: 2px 0 0; }
+  .plan-item .fx { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--moss); flex-shrink: 0; padding-top: 2px; }
+
+  .process-strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+    font-size: 13px;
+  }
+  .process-strip .step { font-weight: 500; white-space: nowrap; }
+  .process-strip .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--mute);
+    letter-spacing: 0.1em;
+    margin-right: 6px;
+  }
+  .process-strip .sep { color: #B4B2A9; margin: 0 14px; }
 
   /* About */
   .about { padding: 40px; display: flex; flex-direction: column; gap: 24px; }
@@ -336,7 +417,8 @@
     .layout { grid-template-columns: 1fr; }
     .hero { grid-template-columns: 1fr; padding: 36px 28px; min-height: 0; }
     .hero h1 { font-size: clamp(30px, 6.5vw, 46px); }
-    .duo { grid-template-columns: 1fr; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .audit-grid { grid-template-columns: 1fr; gap: 24px; }
     .about-grid { grid-template-columns: 1fr; }
     .facts.founder { grid-template-columns: 1fr; }
     .founder-media { aspect-ratio: 3 / 2; }
@@ -346,6 +428,8 @@
     .nav-links { gap: 14px; }
     .hero { padding: 28px 20px; }
     .feature, .about, footer.site { padding: 28px 20px; }
+    .plan { padding: 16px; }
+    .process-strip .sep { margin: 0 8px; }
     .foot-right { text-align: left; }
     .foot-right .mark-56 { margin-left: 0; }
   }
@@ -421,71 +505,153 @@
         </div>
       </section>
 
-      <!-- Two feature panels -->
-      <div class="duo">
+      <!-- Tjänster -->
+      <section id="tjanster" class="panel feature">
+        <div class="kicker">— VAD VI GÖR</div>
+        <h2>Fyra saker,<br>ordentligt gjorda.</h2>
+        <div class="svc-grid">
+          <div class="svc">
+            <div class="num">01</div>
+            <div>
+              <h3>Kostnadsoptimering i Fabric</h3>
+              <p>Rätt kapacitetsnivå och rätt arkitektur som sänker CU-förbrukningen — utan att verksamheten märker något annat än snabbare dataflöden.</p>
+            </div>
+          </div>
+          <div class="svc">
+            <div class="num">02</div>
+            <div>
+              <h3>Dataarkitektur &amp; ETL</h3>
+              <p>Microsoft Fabric fullt ut — lakehouse, pipelines och medallion-arkitektur. Flöden som är snabba, övervakade och byggda för att kunna ärvas av nästa person.</p>
+            </div>
+          </div>
+          <div class="svc">
+            <div class="num">03</div>
+            <div>
+              <h3>Rådgivning — IT och verksamhet</h3>
+              <p>Arkitekturbeslut, prioriteringar och en datapraktik som håller över tid. Samma samtal fungerar med både CTO:n och CFO:n.</p>
+            </div>
+          </div>
+          <div class="svc">
+            <div class="num">04</div>
+            <div>
+              <h3>AI-accelererad leverans</h3>
+              <p>Vi har ett eget tekniskt ramverk där vi nyttjar och skalar med AI i stället för med fler människor. Samma seniora omdöme — snabbare leverans.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- Tjänster -->
-        <section id="tjanster" class="panel feature">
-          <div class="kicker">— VAD VI GÖR</div>
-          <h2>Fyra saker,<br>ordentligt gjorda.</h2>
-          <div>
-            <div class="svc">
-              <div class="num">01</div>
-              <div>
-                <h3>Kostnadsoptimering i Fabric</h3>
-                <p>Rätt kapacitetsnivå och rätt arkitektur som sänker CU-förbrukningen — utan att verksamheten märker något annat än snabbare dataflöden.</p>
+      <!-- Fabric-audit -->
+      <section id="audit" class="panel feature">
+        <div class="audit-grid">
+          <div class="audit-copy">
+            <div class="kicker">— FABRIC-AUDIT</div>
+            <h2>Ni får en <em>genomlysning</em><br>av er plattform.</h2>
+            <p>På en dag går vi igenom fyra områden i er Fabric-miljö — kapacitet och kostnad, ETL-prestanda, semantiska modeller och datakvalitet. Ni får ett utlåtande per område och en skriftlig åtgärdsplan i prioritetsordning.</p>
+            <a class="btn-hero" href="#kontakt">Boka en Fabric-audit →</a>
+            <div class="audit-note">ER TID: ~1,5 H · INGA BINDNINGAR</div>
+          </div>
+
+          <div class="scorecard" aria-hidden="true">
+            <div class="score-head">
+              <div class="score-status">
+                <div class="led" id="audit-led"></div>
+                <div class="score-lbl" id="audit-hdr">RAPPORT KLAR</div>
+              </div>
+              <div class="score-lbl">EXEMPELRAPPORT</div>
+            </div>
+            <div class="score-rows">
+              <div class="srow">
+                <div class="dot" style="background:#E24B4A;"></div>
+                <div class="area">
+                  <div class="name">Kapacitet och kostnad</div>
+                  <div class="verdict">Överdimensionerad SKU · 6 fynd</div>
+                </div>
+                <div class="st" style="color:#F09595;">ÅTGÄRDAS</div>
+              </div>
+              <div class="srow">
+                <div class="dot" style="background:#EF9F27;"></div>
+                <div class="area">
+                  <div class="name">ETL-prestanda</div>
+                  <div class="verdict">Fullast i stället för inkrementellt · 4 fynd</div>
+                </div>
+                <div class="st" style="color:#FAC775;">FÖRBÄTTRAS</div>
+              </div>
+              <div class="srow">
+                <div class="dot" style="background:#EF9F27;"></div>
+                <div class="area">
+                  <div class="name">Semantiska modeller</div>
+                  <div class="verdict">Tunga mått i rusningstid · 3 fynd</div>
+                </div>
+                <div class="st" style="color:#FAC775;">FÖRBÄTTRAS</div>
+              </div>
+              <div class="srow">
+                <div class="dot" style="background:#8EB69B;"></div>
+                <div class="area">
+                  <div class="name">Datakvalitet</div>
+                  <div class="verdict">Bra grund, saknar tester · 2 fynd</div>
+                </div>
+                <div class="st" style="color:#8EB69B;">GODKÄNT</div>
               </div>
             </div>
-            <div class="svc">
-              <div class="num">02</div>
+            <div class="score-sum">
               <div>
-                <h3>Dataarkitektur &amp; ETL</h3>
-                <p>Microsoft Fabric fullt ut — lakehouse, pipelines och medallion-arkitektur. Flöden som är snabba, övervakade och byggda för att kunna ärvas av nästa person.</p>
+                <div class="lbl">FYND TOTALT</div>
+                <div class="val" data-target="15" data-suffix="">15</div>
               </div>
-            </div>
-            <div class="svc">
-              <div class="num">03</div>
               <div>
-                <h3>Rådgivning — IT och verksamhet</h3>
-                <p>Arkitekturbeslut, prioriteringar och en datapraktik som håller över tid. Samma samtal fungerar med både CTO:n och CFO:n.</p>
+                <div class="lbl">QUICK WINS</div>
+                <div class="val" data-target="5" data-suffix="">5</div>
               </div>
-            </div>
-            <div class="svc">
-              <div class="num">04</div>
               <div>
-                <h3>AI-accelererad leverans</h3>
-                <p>Vi har ett eget tekniskt ramverk där vi nyttjar och skalar med AI i stället för med fler människor. Samma seniora omdöme — snabbare leverans.</p>
+                <div class="lbl">CU-POTENTIAL</div>
+                <div class="val" data-target="-35" data-suffix=" %">−35 %</div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
-        <!-- Granskningen -->
-        <section id="audit" class="panel feature">
-          <div class="kicker">— KOM IGÅNG</div>
-          <h2>En dags Fabric-audit,<br>en konkret åtgärdsplan.</h2>
-
-          <div class="terminal">
-            <div class="cmd">$ north-intelligence --fabric-audit</div>
-            <div>→ 1 dag · på plats eller remote</div>
-            <div>→ Genomgång av er Fabric-miljö</div>
-            <div>→ Skriftlig, prioriterad åtgärdsplan</div>
-            <div class="cmd gap">$ omfattning</div>
-            <div>→ Kapacitetskostnad &amp; arkitektur</div>
-            <div>→ ETL-prestanda &amp; semantiska modeller</div>
-            <div>→ Datakvalitet &amp; tillförlitlighet</div>
-            <div class="cmd gap">$ resultat</div>
-            <div>→ Konkreta åtgärder, i prioritetsordning</div>
-            <div>→ Er plattform, era beslut — inga bindningar</div>
+        <div class="plan">
+          <div class="plan-head">
+            <div class="lbl">UR ÅTGÄRDSPLANEN · EXEMPEL</div>
+            <div class="lbl">3 AV 15 FYND</div>
           </div>
-
-          <div class="feature-foot">
-            <div class="tag">OBEROENDE GENOMGÅNG · EN DAG</div>
-            <a href="#kontakt">Boka en Fabric-audit →</a>
+          <div class="plan-item">
+            <span class="prio">PRIO 1</span>
+            <div class="body">
+              <h3>Nedskalning av kapacitet nattetid</h3>
+              <p>F64 körs dygnet runt men lasten finns 06–18.</p>
+            </div>
+            <div class="fx">−31 % CU</div>
           </div>
-        </section>
+          <div class="plan-item">
+            <span class="prio p2">PRIO 2</span>
+            <div class="body">
+              <h3>Inkrementell laddning i säljflödet</h3>
+              <p>Full omladdning varje natt — bara 2 % av raderna är nya.</p>
+            </div>
+            <div class="fx">2,4 h → 20 min</div>
+          </div>
+          <div class="plan-item">
+            <span class="prio p3">PRIO 3</span>
+            <div class="body">
+              <h3>Datatester på kritiska tabeller</h3>
+              <p>Nyckeltabeller saknar validering — fel upptäcks i rapporterna.</p>
+            </div>
+            <div class="fx">+ TILLIT</div>
+          </div>
+        </div>
 
-      </div>
+        <div class="process-strip">
+          <span class="step"><span class="num">01</span>Uppstart 30 min</span>
+          <span class="sep">→</span>
+          <span class="step"><span class="num">02</span>En dags genomgång</span>
+          <span class="sep">→</span>
+          <span class="step"><span class="num">03</span>Rapport och åtgärdsplan</span>
+          <span class="sep">→</span>
+          <span class="step"><span class="num">04</span>Genomgångsmöte — era beslut</span>
+        </div>
+      </section>
 
       <!-- Om -->
       <section id="om" class="panel about">
@@ -557,6 +723,92 @@
     </main>
   </div>
 </div>
+
+<script>
+(function () {
+  var section = document.getElementById('audit');
+  if (!section || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var led = document.getElementById('audit-led');
+  var hdr = document.getElementById('audit-hdr');
+  var rows = Array.prototype.slice.call(section.querySelectorAll('.srow'));
+  var vals = Array.prototype.slice.call(section.querySelectorAll('.score-sum .val'));
+  var items = Array.prototype.slice.call(section.querySelectorAll('.plan-item'));
+
+  var finals = rows.map(function (row) {
+    var st = row.querySelector('.st');
+    return {
+      dot: row.querySelector('.dot').style.background,
+      stText: st.textContent,
+      stColor: st.style.color
+    };
+  });
+
+  function fmt(n, suffix) {
+    return (n < 0 ? '−' : '') + Math.abs(Math.round(n)) + suffix;
+  }
+
+  hdr.textContent = 'AUDIT PÅGÅR';
+  led.classList.add('run');
+  rows.forEach(function (row) {
+    row.querySelector('.dot').style.background = '#5F5E5A';
+    var st = row.querySelector('.st');
+    st.textContent = 'VÄNTAR';
+    st.style.color = '#5F5E5A';
+    row.querySelector('.verdict').style.opacity = '0.3';
+  });
+  vals.forEach(function (v) { v.textContent = fmt(0, v.getAttribute('data-suffix') || ''); });
+  items.forEach(function (item) { item.classList.add('pending'); });
+
+  function countUp(el) {
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var start = performance.now();
+    var dur = 700;
+    function tick(now) {
+      var p = Math.min((now - start) / dur, 1);
+      el.textContent = fmt(target * p, suffix);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function play() {
+    rows.forEach(function (row, i) {
+      var st = row.querySelector('.st');
+      setTimeout(function () {
+        st.textContent = 'ANALYSERAR…';
+        st.style.color = '#DAF1DE';
+      }, 400 + i * 900);
+      setTimeout(function () {
+        row.querySelector('.dot').style.background = finals[i].dot;
+        st.textContent = finals[i].stText;
+        st.style.color = finals[i].stColor;
+        row.querySelector('.verdict').style.opacity = '1';
+      }, 1100 + i * 900);
+    });
+    setTimeout(function () {
+      vals.forEach(countUp);
+      led.classList.remove('run');
+      hdr.textContent = 'RAPPORT KLAR';
+    }, 4800);
+    items.forEach(function (item, i) {
+      setTimeout(function () { item.classList.remove('pending'); }, 5600 + i * 450);
+    });
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        io.disconnect();
+        play();
+      }
+    });
+  }, { threshold: 0.2 });
+  io.observe(section);
+})();
+</script>
 
 </body>
 </html>
